@@ -1,12 +1,9 @@
+#include <iomanip>
 #include <iostream>
 #include <random>
 #include <ctime>
 #include <chrono>
 
-#define TTMATH_DONT_USE_WCHAR 1
-#include <ttmath.h>
-
-#include "zqnum.h"
 #include "zqnumtests.h"
 
 namespace zqnum {

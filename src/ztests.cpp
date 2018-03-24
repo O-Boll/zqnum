@@ -1,7 +1,7 @@
 #include <limits>
 
 #define TTMATH_DONT_USE_WCHAR 1
-#include <ttmath.h>
+#include <ttmath/ttmath.h>
 
 #include "zqnum.h"
 #include "zqnumtests.h"

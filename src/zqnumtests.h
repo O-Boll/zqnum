@@ -5,6 +5,8 @@
 #include <vector>
 #include <utility>
 
+#include "zqnum.h"
+
 namespace zqnum {
 
 bool zqnumTests();
