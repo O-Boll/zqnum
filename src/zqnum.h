@@ -3,6 +3,5 @@
 
 #include "z.h"
 #include "q.h"
-#include "zqnumtests.h"
 
 #endif
