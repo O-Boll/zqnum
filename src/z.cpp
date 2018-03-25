@@ -1,8 +1,14 @@
+/*
+ *  This file is part of the ZQNum bignum library and is distributed under the MIT licence.
+ *  / Olle Eriksson 2018
+ */
+
 #include <algorithm>
 
 #include "z.h"
 
-namespace zqnum {
+namespace zqnum
+{
 
 Z::Z()
 {

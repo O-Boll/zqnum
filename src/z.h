@@ -10,7 +10,8 @@
 #include <string>
 #include <vector>
 
-namespace zqnum {
+namespace zqnum
+{
 
 /*!
  *  \brief  Z implements a big integer.
@@ -35,65 +36,66 @@ class Z
          *
          *           Constructs a big integer, initializing its value to \p n.
          */
-        Z(int n);
+        Z( int n );
 
         /*!
          *   \brief  Constructs a big integer from a string.
          *
-         *           Constructs a big integer from a string representing a base 10 integer.
+         *           Constructs a big integer from a string containing a base 10 integer,
+         *          initializing its value to that of the string.
          *
          *   \param s A string containing a base 10 integer.
          */
-        Z(const std::string& s);
+        Z( const std::string& s );
 
         /*!
          *           Returns true if the integer is equal to \p rhs, false otherwise.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        bool operator==(const Z& rhs) const;
+        bool operator==( const Z& rhs ) const;
 
         /*!
          *           Returns true if the integer is not equal to \p rhs, false otherwise.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        bool operator!=(const Z& rhs) const;
+        bool operator!=( const Z& rhs ) const;
 
         /*!
          *           Returns true if the integer is less than \p rhs, false otherwise.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        bool operator< (const Z& rhs) const;
+        bool operator< ( const Z& rhs ) const;
 
         /*!
          *           Returns true if the integer is less than or equal to \p rhs, false otherwise.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        bool operator<=(const Z& rhs) const;
+        bool operator<=( const Z& rhs ) const;
 
         /*!
          *           Returns true if the integer is greter than \p rhs, false otherwise.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        bool operator> (const Z& rhs) const;
+        bool operator> ( const Z& rhs ) const;
 
         /*!
          *           Returns true if the integer is greater than or equal to \p rhs, false otherwise.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        bool operator>=(const Z& rhs) const;
+        bool operator>=( const Z& rhs ) const;
 
         /*!
          *           Returns the sum of the integer and \p rhs.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        Z operator+(const Z& rhs) const;
+        Z operator+( const Z& rhs ) const;
 
         /*!
          *           Returns the negation of the integer.
@@ -105,21 +107,21 @@ class Z
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        Z operator-(const Z& rhs) const;
+        Z operator-( const Z& rhs ) const;
 
         /*!
          *           Returns the product of the integer and \p rhs.
          *
          *   \param  rhs The argument on the right-hand side of the operator.
          */
-        Z operator*(const Z& rhs) const;
+        Z operator*( const Z& rhs ) const;
 
         /*!
          *           Returns the quotient of the integer and \p rhs (using integer division).
          *
          *   \param  rhs The argument on the right-hand side of the operator (must be nonzero).
          */
-        Z operator/(const Z& rhs) const;
+        Z operator/( const Z& rhs ) const;
 
         /*!
          *           Returns the remainder after division of the integer by \p rhs.
@@ -127,7 +129,7 @@ class Z
          *
          *   \param  rhs The argument on the right-hand side of the operator (must be nonzero).
          */
-        Z operator%(const Z& rhs) const;
+        Z operator%( const Z& rhs ) const;
 
         /*!
          *   \brief  Greatest common divisor.
@@ -135,11 +137,9 @@ class Z
          *           Returns the greatest common divisor of \p a and \p b.
          *           Both arguments must not be 0.
          */
-        static Z gcd(Z a, Z b);
+        static Z gcd( Z a, Z b );
 
-        /*!
-         *           Returns a string containing the integer in base 10 format.
-         */
+        //!          Returns a string containing the integer in base 10 format.
         std::string toString() const;
 
     private:
@@ -164,14 +164,14 @@ class Z
          *
          *   \param  i Non-negative index variable.
          */
-        uint32_t operator[](int i) const;
+        uint32_t operator[]( int i ) const;
 
         /*!
          *           Returns a reference the element at position \p i of #mwuint.
          *
          *   \param  i Non-negative index variable.
          */
-        uint32_t& operator[](int i);
+        uint32_t& operator[]( int i );
 
         /*!
          *   \brief  Trim leading zeros.
@@ -190,7 +190,7 @@ class Z
          *           the absolute value of \p lhs equals the absolute value of \p rhs.
          *           This method is used in the implementations of some of the relational operators on Z.
          */
-        static bool ueq(const Z& lhs, const Z& rhs);
+        static bool ueq( const Z& lhs, const Z& rhs );
 
         /*!
          *   \brief  Unsigned less than.
@@ -199,7 +199,7 @@ class Z
          *           the absolute value of \p lhs is less than the absolute value of \p rhs.
          *           This method is used in the implementations of some of the relational operators on Z.
          */
-        static bool ult(const Z& lhs, const Z& rhs);
+        static bool ult( const Z& lhs, const Z& rhs );
 
         /*!
          *   \brief  Unsigned addition.
@@ -207,7 +207,7 @@ class Z
          *           Adds the absolute values of \p lhs and \p rhs and stores the result in \p sum.
          *           This method is used in the implementations of the addition and subtraction operators on Z.
          */
-        static void uadd(const Z& lhs, const Z& rhs, Z& sum);
+        static void uadd( const Z& lhs, const Z& rhs, Z& sum );
 
         /*!
          *   \brief  Unsigned subtraction.
@@ -217,7 +217,7 @@ class Z
          *           value of \p rhs.
          *           This method is used in the implementations of the addition and subtraction operators on Z.
          */
-        static void usub(const Z& lhs, const Z& rhs, Z& difference);
+        static void usub( const Z& lhs, const Z& rhs, Z& difference );
 
         /*!
          *   \brief  Unsigned multiplication.
@@ -225,7 +225,7 @@ class Z
          *           Multiplies the absolute values of \p lhs and \p rhs and stores the result in \p product.
          *           This method is used in the implementation of the multiplication operator on Z.
          */
-        static void umul(const Z& lhs, const Z& rhs, Z& product);
+        static void umul( const Z& lhs, const Z& rhs, Z& product );
 
         /*!
          *   \brief  Unsigned integer division.
@@ -234,7 +234,7 @@ class Z
          *           the quotient in \p quotient and the remainder in \p remainder.
          *           This method is used in the implementation of the division and modulo operators on Z.
          */
-        static void udiv(const Z& lhs, const Z& rhs, Z& quotient, Z& remainder);
+        static void udiv( const Z& lhs, const Z& rhs, Z& quotient, Z& remainder );
 
 };
 

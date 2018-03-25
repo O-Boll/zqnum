@@ -1,3 +1,8 @@
+/*
+ *  This file is part of the ZQNum bignum library and is distributed under the MIT licence.
+ *  / Olle Eriksson 2018
+ */
+
 #include <iomanip>
 #include <iostream>
 #include <random>
@@ -6,9 +11,11 @@
 
 #include "zqnumtests.h"
 
-namespace zqnum {
+namespace zqnum
+{
 
-bool zqnumTests() {
+bool zqnumTests()
+{
 
     using namespace std::chrono;
 
@@ -41,7 +48,7 @@ bool zqnumTests() {
     z_test_pointers.push_back(zTestFibonacci);
     z_test_pointers.push_back(zTestFactorial);
 
-    bool z_passed = zTests(z_test_pointers);
+    bool z_passed = runTests("TESTING CLASS Z", z_test_pointers);
 
     std::cout << std::endl;
 
@@ -65,7 +72,7 @@ bool zqnumTests() {
     q_test_pointers.push_back(qTestCauchy_01);
     q_test_pointers.push_back(qTestCauchy_02);
 
-    bool q_passed = qTests(q_test_pointers);
+    bool q_passed = runTests("TESTING CLASS Q", q_test_pointers);
 
     std::cout << std::endl << std::string(16, '=');
     std::cout << " SUMMARY ";
@@ -82,9 +89,11 @@ bool zqnumTests() {
     std::cout << std::endl;
 }
 
-bool zTests(std::vector<std::pair<std::string, bool> (*)(void)>& test_pointers) {
+bool runTests(const std::string& test_name,
+              const std::vector<std::pair<std::string, bool> (*)(void)>& test_pointers)
+{
     std::cout << std::string(16, '=');
-    std::cout << " TESTING CLASS Z ";
+    std::cout << ' ' << test_name << ' ';
     std::cout << std::string(16, '=') << std::endl;
     std::cout << std::endl;
     int test_counter = 1;
@@ -105,40 +114,6 @@ bool zTests(std::vector<std::pair<std::string, bool> (*)(void)>& test_pointers) 
         std::cout << " (" << time.count() << " s)";
         std::cout << std::endl;
         test_counter++;
-        if(test_result.second)
-            pass_counter++;
-        total_time += time.count();
-    }
-    std::cout << std::endl;
-    std::cout << std::string(2, ' ');
-    std::cout << "SUMMARY: ";
-    std::cout << pass_counter << " of " << test_pointers.size() << " tests passed in ";
-    std::cout << std::fixed << std::setprecision(2) << total_time << " seconds.";
-    std::cout << std::endl;
-}
-
-bool qTests(std::vector<std::pair<std::string, bool> (*)(void)>& test_pointers) {
-    std::cout << std::string(16, '=');
-    std::cout << " TESTING CLASS Q ";
-    std::cout << std::string(16, '=') << std::endl;
-    std::cout << std::endl;
-    int test_counter = 1;
-    int pass_counter = 0;
-    double total_time = 0.0;
-    for(auto fnptr : test_pointers)
-    {
-        using namespace std::chrono;
-        auto t0 = high_resolution_clock::now();
-        std::pair<std::string, bool> test_result = fnptr();
-        auto t1 = high_resolution_clock::now();
-        duration<double> time = duration_cast<duration<double>>(t1 - t0);
-        std::cout << std::string(2, ' ');
-        std::cout << "[" << (test_result.second ? "PASS" : "FAIL") << "]";
-        std::cout << "  |  ";
-        std::cout << test_result.first;
-        std::cout << std::fixed << std::setprecision(2);
-        std::cout << " (" << time.count() << " s)";
-        std::cout << std::endl;
         if(test_result.second)
             pass_counter++;
         total_time += time.count();
@@ -216,7 +191,7 @@ int nextPermutation(std::vector<int>& s)
     return transpositions;
 }
 
-Q determinant(std::vector<std::vector<Q>>& M)
+Q determinant(const std::vector<std::vector<Q>>& M)
 {
     int d = M.size(), transpositions = 0, t;
     std::vector<int> s(d);
@@ -306,7 +281,7 @@ std::vector<std::vector<Q>> cauchyMatrix(const std::vector<Q>& x, const std::vec
     return M;
 }
 
-Q cauchyMatrixCoefficient(const std::vector<Q>& x, const std::vector<Q>& y, int i, int j)
+Q cauchyMatrixInvCoef(const std::vector<Q>& x, const std::vector<Q>& y, int i, int j)
 {
     int d = x.size();
     Q a(1);
