@@ -2,7 +2,7 @@
 
 ZQNum is a lightweight C++ library for doing arbitrary-precision arithmetic that I am currently developing. It provides classes for big integers and rational numbers.
 
-### Author
+## Author
 
 * Olle Eriksson
 
